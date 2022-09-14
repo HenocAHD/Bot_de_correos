@@ -1,0 +1,15 @@
+README.md
+BotEmails/bin
+MailBot.Browser/bin
+MailBot.Seguimiento/bin
+MailBot.SendGrid/bin
+Mailbot.Snovio/bin
+MailBot.Webhook/bin
+SendEmails/bin
+SendgridApi/bin
+Snovio/bin
+SpamBotTest/bin
+Webhook/bin
+Webhook-Api/bin
+bin
+obj
