@@ -17,6 +17,8 @@ namespace MailBot.SendGrid.controllers
             
             foreach(var mail in mails)
             {
+                
+
                 IJobDetail jobDetail = JobBuilder.Create<SendgridJob>()
                 .WithIdentity($"job_{mail.client_id}_{Guid.NewGuid()}", $"group_{mail.client_id}_{Guid.NewGuid()}")
                 .SetJobData(new JobDataMap

@@ -14,13 +14,13 @@ var apikey = Environment.GetEnvironmentVariable("");
 var result = snov.getEmails("https://www.linkedin.com/in/davesaenz/").GetAwaiter().GetResult();
 Console.WriteLine(result.data.emails[0].email);*/
 
-            /*var sendgrid = new SendGridClient("sdsad", "sdsda");*/
-            
-            
+/*var sendgrid = new SendGridClient("sdsad", "sdsda");*/
+
+
 const string apikey = "f9a9f249-6f5c-447d-ae20-d93bfd64bf60";
-var webhook = new WebhookTools(apikey, new Proxy("134.202.250.99", "59111", "josemaleon44", "i8m23Dag2z",true));
-var list = webhook.GetAllDataRaw().GetAwaiter().GetResult();
-//await webhook.GetAllDataRaw();
-Console.WriteLine(list[0]);
+var webhook = new WebhookTools();
+var result = webhook.Actualizar("8").GetAwaiter().GetResult();
+
+Console.WriteLine(result);
 //Console.WriteLine(await webhook.GetIp());
 

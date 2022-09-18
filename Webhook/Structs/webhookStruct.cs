@@ -1,13 +1,12 @@
-using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Webhook.Structs
+namespace WebhookApi.Structs
 {
-    public struct webhookListStruct
-    {
-        public List<webhookStruct> content { get; set; }
-    }
-
-    public struct webhookStruct
+    public class webhookStruct
     {
         private DateTime _create_at;
 

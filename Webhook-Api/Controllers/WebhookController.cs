@@ -35,13 +35,13 @@ namespace Webhook_Api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<webhook> Get()
+        public List<webhook> Get()
         {
             try
             {
                 return webhook.SelectWebhookNoRequired(database.getdatabase());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 NotFound();
@@ -49,28 +49,33 @@ namespace Webhook_Api.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public webhook Get(string id)
+        {
+            return webhook.SelectById(database.getdatabase(), id);
+        }
+
         [HttpPut]
-        public void PutRequired([FromBody] IEnumerable<string> ids)
+        public void PutRequired([FromBody] string id)
         {
             try
             {
-                foreach (var id in ids)
+
+                var element = webhook.SelectById(database.getdatabase(), id);
+                if (element != null)
                 {
-                    var element = webhook.SelectById(database.getdatabase(), id);
-                    if (element != null)
-                    {
-                        element.required = true;
-                        element.Update(database.getdatabase());
-                    }
+                    element.required = true;
+                    element.Update(database.getdatabase());
                 }
+
                 Ok();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 NotFound();
             }
-            
+
         }
     }
 }

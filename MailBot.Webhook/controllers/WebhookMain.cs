@@ -15,14 +15,28 @@ namespace MailBot.Webhook.controllers
     {
         public async Task Execute(IJobExecutionContext context)
         {
-            var proxies = proxys.SelectAll(database.getdatabase());
-            var webhook = new WebhookTools(Environment.GetEnvironmentVariable("api_key").ToString());
-            var dataRaw = await webhook.GetAllDataRaw();
 
-            int count = 0;
-            foreach (var data in dataRaw)
+            var webhook = new WebhookTools();
+            var datos = await webhook.GetWebhookDataLikeList();
+            
+            foreach (var data in datos.content)
             {
+                IJobDetail jobDetail = JobBuilder.Create<WebhookJob>()
+                .WithIdentity($"job_{data.email}_{Guid.NewGuid()}", $"group_{data.email}_{Guid.NewGuid()}")
+                .SetJobData(new JobDataMap
+                {
+                    {"id_webhook_data",data.id_webhook_data}
+                })
+                .Build();
 
+                ITrigger trigger = TriggerBuilder.Create()
+                    .WithIdentity($"job_{data.email}_{Guid.NewGuid()}", $"group_{data.email}_{Guid.NewGuid()}")
+                    //schedule
+                    .StartNow()
+                    .Build();
+
+                app.app.getScheduler.ScheduleJob(jobDetail, trigger);
+                app.app.getScheduler.Start();
             }
         }
     }

@@ -8,18 +8,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Serilog;
+using Linkedin.Net.Estructuras;
+using EllipticCurve;
 
 namespace MailBot.SendGrid.controllers
 {
     internal class SendgridJob : IJob
     {
+        private accounts cuenta = new accounts();
+
         public async Task Execute(IJobExecutionContext context)
         {
+            
             Log.Information("Iniciando la tarea de enviar los correos");
             try
             {
                 Log.Information("Obteniendo datos de la cuenta...");
-                var cuenta = accounts.SelectById(database.getdatabase(), context.MergedJobDataMap["account_id"].ToString());
+                Log.Information(context.MergedJobDataMap["account_id"].ToString());
+                cuenta = accounts.SelectById(database.getdatabase(), context.MergedJobDataMap["account_id"].ToString());
                 Log.Information("Datos obtenidos correctamente");
 
                 Log.Information("Obteniendo datos del cliente...");
@@ -31,13 +37,15 @@ namespace MailBot.SendGrid.controllers
                 Log.Information("Cliente creado correctamente");
 
                 Log.Information("Enviando el mensaje...");
-                var account_mail = $"{cuenta.account_name.Replace(" ", ".")}@panamify.com";
+                
+                var account_mail = $"{cuenta.account_name.Replace(" ", ".")}@panamify.com".ToLower();
 
-                var templateUrl = Path.Combine(Directory.GetCurrentDirectory(), "templates", cuenta.account_name);
+                var templateUrl = Path.Combine(Directory.GetCurrentDirectory(), "templates", $"{cuenta.account_name}.html");
                 var enviando = await sendgrid_client.SendEmail(cuenta.account_mail, account_mail, templateUrl, cliente.client_name);
                 if (enviando != "accepted")
                 {
                     Log.Fatal("Sengrid no acepto el envio del correo");
+                    Log.Fatal(enviando);
                 }
                 else
                 {
