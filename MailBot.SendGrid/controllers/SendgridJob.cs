@@ -15,7 +15,6 @@ namespace MailBot.SendGrid.controllers
 {
     internal class SendgridJob : IJob
     {
-        private accounts cuenta = new accounts();
 
         public async Task Execute(IJobExecutionContext context)
         {
@@ -25,7 +24,7 @@ namespace MailBot.SendGrid.controllers
             {
                 Log.Information("Obteniendo datos de la cuenta...");
                 Log.Information(context.MergedJobDataMap["account_id"].ToString());
-                cuenta = accounts.SelectById(database.getdatabase(), context.MergedJobDataMap["account_id"].ToString());
+                var cuenta = accounts.SelectById(database.getdatabase(), context.MergedJobDataMap["account_id"].ToString());
                 Log.Information("Datos obtenidos correctamente");
 
                 Log.Information("Obteniendo datos del cliente...");
@@ -33,16 +32,19 @@ namespace MailBot.SendGrid.controllers
                 Log.Information("Datos obtenidos correctamente");
 
                 Log.Information("Creando el cliente de Sendgrid...");
-                var sendgrid_client = new SendGridTools(Environment.GetEnvironmentVariable("api_key").ToString());
+                Console.WriteLine(Environment.GetEnvironmentVariable("api_key").ToString());
+                var sendgrid_client = new SendGridTools("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");
                 Log.Information("Cliente creado correctamente");
 
                 Log.Information("Enviando el mensaje...");
                 
                 var account_mail = $"{cuenta.account_name.Replace(" ", ".")}@panamify.com".ToLower();
-
+                Console.WriteLine(account_mail);
                 var templateUrl = Path.Combine(Directory.GetCurrentDirectory(), "templates", $"{cuenta.account_name}.html");
-                var enviando = await sendgrid_client.SendEmail(cuenta.account_mail, account_mail, templateUrl, cliente.client_name);
-                if (enviando != "accepted")
+                Console.WriteLine(templateUrl); 
+                Console.WriteLine(cliente.client_email); 
+                var enviando = await sendgrid_client.SendEmail(account_mail, cliente.client_email, templateUrl, cliente.client_name);
+                if (enviando.ToString() != "Accepted")
                 {
                     Log.Fatal("Sengrid no acepto el envio del correo");
                     Log.Fatal(enviando);

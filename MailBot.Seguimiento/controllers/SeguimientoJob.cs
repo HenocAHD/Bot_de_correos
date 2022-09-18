@@ -15,7 +15,8 @@ namespace MailBot.Seguimiento.controllers
     {
         public async Task Execute(IJobExecutionContext context)
         {
-            var mail = email_sent.SelectById(app.app.getMutexDatabase, context.MergedJobDataMap["id_mail_sent"].ToString());
+            
+            var mail = email_sent.SelectById(app.app.getMutexDatabase, context.MergedJobDataMap["id_email_sent"].ToString());
 
             if ((DateTime.Now - mail.date_sent).TotalDays >= 4)
             {
@@ -32,18 +33,20 @@ namespace MailBot.Seguimiento.controllers
                 Log.Information("Cliente creado correctamente");
 
                 Log.Information("Enviando el mensaje...");
-                var account_mail = $"{cuenta.account_name.Replace(" ", ".")}@panamify.com";
+                var account_mail = $"{cuenta.account_name.Replace(" ", ".")}@panamify.com".ToLower();
 
-                var templateUrl = Path.Combine(Directory.GetCurrentDirectory(), "templates", cuenta.account_name);
-                var enviando = await sendgrid_client.SendEmail(cuenta.account_mail, account_mail, templateUrl, cliente.client_name);
-                if (enviando != "accepted")
+                var templateUrl = Path.Combine(Directory.GetCurrentDirectory(), "templates", $"{cuenta.account_name}.html");
+                var enviando = await sendgrid_client.SendEmail(account_mail, cliente.client_email, templateUrl, cliente.client_name);
+                if (enviando != "Accepted")
                 {
                     Log.Fatal("Sengrid no acepto el envio del correo");
+                    Log.Fatal(enviando);
                 }
                 else
                 {
-                    Log.Information("Correo de seguimiento eniado correctamente");
-                    //agregar seguimiento
+                    Log.Information("Correo de seguimiento enviado correctamente");
+                    mail.status = 3;
+                    mail.Update(app.app.getMutexDatabase);
                 }
             }
         }
