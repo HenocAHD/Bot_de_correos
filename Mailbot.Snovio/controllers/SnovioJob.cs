@@ -16,7 +16,7 @@ namespace MailBot.Snovio.controllers
     {
         public async Task Execute(IJobExecutionContext context)
         {
-            var cliente = clients.SelectById(database.getdatabase(), context.MergedJobDataMap["client_id"].ToString());
+            var cliente = clients.SelectById(app.app.getMutexDatabase, context.MergedJobDataMap["client_id"].ToString());
             var snovio = new SnovioTools(Environment.GetEnvironmentVariable("user_id").ToString(), Environment.GetEnvironmentVariable("user_secret").ToString());
             try
             {

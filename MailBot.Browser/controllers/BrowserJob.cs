@@ -111,11 +111,15 @@ namespace MailBot.Browser.controllers
 
             //creamos el navegador
             Log.Information("Descargando el navegador");
-            await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultChromiumRevision);
+            if (app.app.getMutexDatabase.WaitOne())
+            {
+                new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultChromiumRevision).Wait();
+                app.app.getMutexDatabase.ReleaseMutex();
+            }
             Log.Information("Navegador descargado");
 
             //Launcher the browser
-            browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = true, DefaultViewport = new ViewPortOptions { Width = 600, Height = 1200 }, Args = new[] { $"--proxy-server={Environment.GetEnvironmentVariable("proxy_ip")}:{Environment.GetEnvironmentVariable("proxy_port")}" } });
+            browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = false, DefaultViewport = new ViewPortOptions { Width = 600, Height = 1200 }, Args = new[] { $"--proxy-server={Environment.GetEnvironmentVariable("proxy_ip")}:{Environment.GetEnvironmentVariable("proxy_port")}" } });
 
             //create a new page and go to linkedin
             Page page = await browser.NewPageAsync();
@@ -169,6 +173,7 @@ namespace MailBot.Browser.controllers
                 //ingresamos a Linkedin
                 Log.Information("Obteniendo la nueva url");
                 var resgoto = await page.GoToAsync(cliente.client_url.ToString(), 120000, new[] { WaitUntilNavigation.DOMContentLoaded });
+                await page.WaitForNavigationAsync();
                 Console.WriteLine(page.Url);
                 cliente.client_url = page.Url;
                 cliente.client_url_update = true;
