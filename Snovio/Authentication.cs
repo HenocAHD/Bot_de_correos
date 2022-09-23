@@ -55,7 +55,12 @@ public class Authentication
                 };
 
                 var response = await $"{SnovioApiUrl}v1/{authEndpoint}"
-                    .PostJsonAsync(parametros).ReceiveJson<AccessTokenStruct>();
+                    .PostJsonAsync(new
+                    {
+                        grant_type = "client_credentials",
+                        client_id = clientId,
+                        client_secret = clientSecret
+                    }).ReceiveJson<AccessTokenStruct>();
                 
                 _accessToken.saveToken(response);
                 return response;
