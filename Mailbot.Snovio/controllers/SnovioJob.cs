@@ -22,16 +22,19 @@ namespace MailBot.Snovio.controllers
             var snovio = new SnovioTools(Environment.GetEnvironmentVariable("user_id").ToString(), Environment.GetEnvironmentVariable("user_secret").ToString());
             try
             {
-                if(cliente.client_email == String.Empty)
+                if (cliente.client_email == String.Empty)
                 {
                     Log.Information("Intentando conseguir el email del cliente");
                     var newEmail = await snovio.getProspectFromUrL(cliente.client_url);
 
-                    if (newEmail.data.emails.Count > 0)
+                    if (newEmail.data.emails != null)
                     {
-                        cliente.client_email = newEmail.data.emails[0].email;
-                        cliente.Update(app.app.getMutexDatabase);
-                        Log.Information("Emails actuializados correctamente");
+                        if (newEmail.data.emails.Count > 0)
+                        {
+                            cliente.client_email = newEmail.data.emails[0].email;
+                            cliente.Update(app.app.getMutexDatabase);
+                            Log.Information("Emails actuializados correctamente");
+                        }
                     }
                     else
                     {
@@ -42,7 +45,7 @@ namespace MailBot.Snovio.controllers
                 {
                     Log.Information("El cliente ya tiene un email asignado");
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -51,7 +54,7 @@ namespace MailBot.Snovio.controllers
             }
             finally
             {
-                
+
             }
         }
     }
