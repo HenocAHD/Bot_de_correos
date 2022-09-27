@@ -20,7 +20,7 @@ public class SendGridTools{
         var subject = $"Hi {toName}";
         var plainContext = "123";
         var htmlContent = File.ReadAllText(templateUrl);
-        htmlContent = htmlContent.Replace("--Nombre--", toName);
+        htmlContent = htmlContent.Replace("---Nombre---", toName);
         var ms = MailHelper.CreateSingleEmail(from, to, subject, plainContext, htmlContent);
         var response = await client.SendEmailAsync(ms);
 
