@@ -27,7 +27,7 @@ namespace Webhook;
 public class WebhookTools
 {
     //variables
-    private const string _url = "https://5923-45-170-32-96.ngrok.io/api/webhook";
+    private const string _url = "https://718a-45-170-32-25.ngrok.io/api/webhook";
     private string _token = "93a2ee7f-7bb6-4126-98f6-e3935ebdaab2";
     private string _apiKey;
     private Proxy _Proxy;

@@ -22,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Snovio\SnovioApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Plantillas\platilla1.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

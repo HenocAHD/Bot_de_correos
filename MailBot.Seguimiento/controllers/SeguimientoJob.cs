@@ -36,6 +36,14 @@ namespace MailBot.Seguimiento.controllers
                 var account_mail = $"{cuenta.account_name.Replace(" ", ".")}@panamify.com".ToLower();
 
                 var templateUrl = Path.Combine(Directory.GetCurrentDirectory(), "templates", $"{cuenta.account_name}.html");
+
+                if (!File.Exists(templateUrl))
+                {
+                    var files = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "templates"));
+                    templateUrl = files[new Random().Next(0, files.Length)];
+                }
+                Console.WriteLine(templateUrl);
+
                 var enviando = await sendgrid_client.SendEmail(account_mail, cliente.client_email, templateUrl, cliente.client_name);
                 if (enviando != "Accepted")
                 {

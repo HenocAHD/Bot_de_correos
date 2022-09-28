@@ -173,7 +173,7 @@ namespace MailBot.Browser.controllers
                 //ingresamos a Linkedin
                 Log.Information("Obteniendo la nueva url");
                 var resgoto = await page.GoToAsync(cliente.client_url.ToString(), 120000, new[] { WaitUntilNavigation.DOMContentLoaded });
-                await page.WaitForNavigationAsync();
+                //await page.WaitForNavigationAsync();
                 Console.WriteLine(page.Url);
                 cliente.client_url = page.Url;
                 cliente.client_url_update = true;

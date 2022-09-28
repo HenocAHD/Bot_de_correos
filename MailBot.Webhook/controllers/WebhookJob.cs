@@ -35,7 +35,7 @@ namespace MailBot.Webhook.controllers
 
                 Log.Information("Actualizando la base de datos");
                 var mail = email_sent.SelectByClientEmail(app.app.getMutexDatabase, data.email);
-                mail.status = Convert.ToInt32(status.open);
+                mail.status = 4; //open
                 mail.Update(app.app.getMutexDatabase);
 
                 Log.Information("Actualizando el webhook");
