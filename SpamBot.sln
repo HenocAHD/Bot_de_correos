@@ -11,10 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebhookApi", "Webhook\Webho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendgridApi", "SendgridApi\SendgridApi.csproj", "{75A30DF0-C67D-4B32-A876-96094537FF1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendEmails", "SendEmails\SendEmails.csproj", "{DCF59F8A-9214-4F86-8594-7E7E3221340E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BotEmails", "BotEmails\BotEmails.csproj", "{661AD555-533A-4EA3-BEAE-79D46A3CD0BD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailBot.Browser", "MailBot.Browser\MailBot.Browser.csproj", "{A7F0BF90-0EA4-4051-9319-F050509E3F9E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailBot.Webhook", "MailBot.Webhook\MailBot.Webhook.csproj", "{83FFCA92-BE9E-41DC-ADEF-0B5846919B40}"
@@ -30,7 +26,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailBot.SendGrid", "MailBot
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailBot.Seguimiento", "MailBot.Seguimiento\MailBot.Seguimiento.csproj", "{CB987EB5-F92F-4C56-ADE0-142C3F2911F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webhook-Api", "Webhook-Api\Webhook-Api.csproj", "{CED5E827-DF34-4DE8-BB71-6D8DAC8D2DB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webhook-Api", "Webhook-Api\Webhook-Api.csproj", "{CED5E827-DF34-4DE8-BB71-6D8DAC8D2DB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,14 +50,6 @@ Global
 		{75A30DF0-C67D-4B32-A876-96094537FF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75A30DF0-C67D-4B32-A876-96094537FF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75A30DF0-C67D-4B32-A876-96094537FF1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DCF59F8A-9214-4F86-8594-7E7E3221340E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DCF59F8A-9214-4F86-8594-7E7E3221340E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DCF59F8A-9214-4F86-8594-7E7E3221340E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DCF59F8A-9214-4F86-8594-7E7E3221340E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{661AD555-533A-4EA3-BEAE-79D46A3CD0BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{661AD555-533A-4EA3-BEAE-79D46A3CD0BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{661AD555-533A-4EA3-BEAE-79D46A3CD0BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{661AD555-533A-4EA3-BEAE-79D46A3CD0BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A7F0BF90-0EA4-4051-9319-F050509E3F9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A7F0BF90-0EA4-4051-9319-F050509E3F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7F0BF90-0EA4-4051-9319-F050509E3F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU

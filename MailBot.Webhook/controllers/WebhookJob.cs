@@ -39,13 +39,14 @@ namespace MailBot.Webhook.controllers
                 mail.Update(app.app.getMutexDatabase);
 
                 Log.Information("Actualizando el webhook");
-                var update = await webhook.Actualizar(data.id_webhook_data.ToString());
+                var update = await webhook.Actualizar(context.MergedJobDataMap["id_webhook_data"].ToString());
                 Log.Information(update);
             }
             catch (Exception ex)
             {
                 Log.Fatal("Error Obteniendo los datos del webhook");
                 Log.Fatal(ex.Message);
+                Log.Fatal("base de datos: " + Environment.GetEnvironmentVariable("database_name"));
             }
             finally { Log.Information("Tarea finalizada exito"); }
 

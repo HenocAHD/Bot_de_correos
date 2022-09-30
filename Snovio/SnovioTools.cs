@@ -10,6 +10,8 @@ public class SnovioTools
 {
     private string _token;
     private string SnovioApiUrl = "https://api.snov.io/";
+    private static int countRequest = 0;
+
     public SnovioTools(string userId, string userSecret)
     {
         var snov = new Authentication(userId, userSecret);
@@ -27,13 +29,20 @@ public class SnovioTools
 
         var response = await $"{SnovioApiUrl}v1/add-url-for-search"
             .PostJsonAsync(parametros).ReceiveString();
-        Console.WriteLine(response+"siuuuu");
+        Console.WriteLine(response + "siuuuu");
         return response;
     }
 
     //obtiene los datos del prospecto
     public async Task<ProspectStruct> getProspectFromUrL(string urlProspect)
     {
+
+        if (countRequest >= 60)
+        {
+            await Task.Delay(90000);
+            countRequest = 0;
+        }
+
         await addUrlToSearchForProspect(urlProspect);
 
         var parametros = new
@@ -44,6 +53,9 @@ public class SnovioTools
         var response = await $"{SnovioApiUrl}v1/get-emails-from-url"
             .PostJsonAsync(parametros).ReceiveJson<ProspectStruct>();
 
+        countRequest += 2;
+        Console.WriteLine(countRequest);
+
         return response;
     }
 
@@ -52,6 +64,8 @@ public class SnovioTools
     {
         try
         {
+            
+
             var prospect = getProspectFromUrL(urlProfileLInkedin).GetAwaiter().GetResult();
             var parametros = new
             {
@@ -59,11 +73,13 @@ public class SnovioTools
                 domain = prospect.data.currentJob[0].site,
                 firstName = prospect.data.firstName,
                 lastName = prospect.data.lastName
-                
+
             };
 
             var response = await $"{SnovioApiUrl}v1/get-emails-from-names"
                 .PostJsonAsync(parametros).ReceiveJson<ProspectEmailsStruct>();
+
+            
 
             return response;
         }

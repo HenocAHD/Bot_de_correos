@@ -119,7 +119,7 @@ namespace MailBot.Browser.controllers
             Log.Information("Navegador descargado");
 
             //Launcher the browser
-            browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = false, DefaultViewport = new ViewPortOptions { Width = 600, Height = 1200 }, Args = new[] { $"--proxy-server={Environment.GetEnvironmentVariable("proxy_ip")}:{Environment.GetEnvironmentVariable("proxy_port")}" } });
+            browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = true, DefaultViewport = new ViewPortOptions { Width = 600, Height = 1200 }, Args = new[] { $"--proxy-server={Environment.GetEnvironmentVariable("proxy_ip")}:{Environment.GetEnvironmentVariable("proxy_port")}" } });
 
             //create a new page and go to linkedin
             Page page = await browser.NewPageAsync();

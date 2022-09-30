@@ -17,9 +17,9 @@ namespace MailBot.Webhook.controllers
         {
 
             var webhook = new WebhookTools();
-            var datos = await webhook.GetWebhookDataLikeList();
+            var datos = await webhook.GetWebhookData();
             
-            foreach (var data in datos.content)
+            foreach (var data in datos)
             {
                 IJobDetail jobDetail = JobBuilder.Create<WebhookJob>()
                 .WithIdentity($"job_{data.email}_{Guid.NewGuid()}", $"group_{data.email}_{Guid.NewGuid()}")

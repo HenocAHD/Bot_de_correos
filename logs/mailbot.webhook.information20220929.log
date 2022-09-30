@@ -1,0 +1,268 @@
+2022-09-29 10:22:57.554 -06:00 [INF] Configurando variables de entorno
+2022-09-29 10:22:57.629 -06:00 [INF] Variables cargadas
+2022-09-29 10:22:57.632 -06:00 [INF] Configurando Quartz
+2022-09-29 10:22:58.035 -06:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2022-09-29 10:22:58.039 -06:00 [INF] Quartz Scheduler created
+2022-09-29 10:22:58.042 -06:00 [INF] RAMJobStore initialized.
+2022-09-29 10:22:58.049 -06:00 [INF] Scheduler meta-data: Quartz Scheduler (v3.4.0.0) 'MainScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 1 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-09-29 10:22:58.053 -06:00 [INF] Quartz scheduler 'MainScheduler' initialized
+2022-09-29 10:22:58.055 -06:00 [INF] Quartz scheduler version: 3.4.0.0
+2022-09-29 10:22:58.057 -06:00 [INF] Quartz configurado correctamente
+2022-09-29 10:22:58.059 -06:00 [INF] Configurando mutex
+2022-09-29 10:22:58.062 -06:00 [INF] Mutex configurado correctamente
+2022-09-29 10:22:58.088 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:22:59.133 -06:00 [ERR] Job group1.job threw an unhandled Exception: 
+Flurl.Http.FlurlHttpException: Call failed with status code 404 (Not Found): GET https://718a-45-170-32-25.ngrok.io/api/webhook
+   at Flurl.Http.FlurlRequest.HandleExceptionAsync(FlurlCall call, Exception ex, CancellationToken token)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.ResponseExtensions.ReceiveString(Task`1 response)
+   at Webhook.WebhookTools.GetWebhookData() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 65
+   at Webhook.WebhookTools.GetWebhookDataLikeList() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 73
+   at MailBot.Webhook.controllers.WebhookMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.Webhook\controllers\WebhookMain.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+2022-09-29 10:22:59.223 -06:00 [ERR] Job group1.job threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> Flurl.Http.FlurlHttpException: Call failed with status code 404 (Not Found): GET https://718a-45-170-32-25.ngrok.io/api/webhook
+   at Flurl.Http.FlurlRequest.HandleExceptionAsync(FlurlCall call, Exception ex, CancellationToken token)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.ResponseExtensions.ReceiveString(Task`1 response)
+   at Webhook.WebhookTools.GetWebhookData() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 65
+   at Webhook.WebhookTools.GetWebhookDataLikeList() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 73
+   at MailBot.Webhook.controllers.WebhookMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.Webhook\controllers\WebhookMain.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+   --- End of inner exception stack trace --- [See nested exception: Flurl.Http.FlurlHttpException: Call failed with status code 404 (Not Found): GET https://718a-45-170-32-25.ngrok.io/api/webhook
+   at Flurl.Http.FlurlRequest.HandleExceptionAsync(FlurlCall call, Exception ex, CancellationToken token)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.ResponseExtensions.ReceiveString(Task`1 response)
+   at Webhook.WebhookTools.GetWebhookData() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 65
+   at Webhook.WebhookTools.GetWebhookDataLikeList() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 73
+   at MailBot.Webhook.controllers.WebhookMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.Webhook\controllers\WebhookMain.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)]
+2022-09-29 10:23:58.147 -06:00 [INF] Configurando variables de entorno
+2022-09-29 10:23:58.219 -06:00 [INF] Variables cargadas
+2022-09-29 10:23:58.221 -06:00 [INF] Configurando Quartz
+2022-09-29 10:23:58.378 -06:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2022-09-29 10:23:58.382 -06:00 [INF] Quartz Scheduler created
+2022-09-29 10:23:58.385 -06:00 [INF] RAMJobStore initialized.
+2022-09-29 10:23:58.389 -06:00 [INF] Scheduler meta-data: Quartz Scheduler (v3.4.0.0) 'MainScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 1 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-09-29 10:23:58.392 -06:00 [INF] Quartz scheduler 'MainScheduler' initialized
+2022-09-29 10:23:58.394 -06:00 [INF] Quartz scheduler version: 3.4.0.0
+2022-09-29 10:23:58.396 -06:00 [INF] Quartz configurado correctamente
+2022-09-29 10:23:58.398 -06:00 [INF] Configurando mutex
+2022-09-29 10:23:58.401 -06:00 [INF] Mutex configurado correctamente
+2022-09-29 10:23:58.424 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:23:58.950 -06:00 [ERR] Job group1.job threw an unhandled Exception: 
+Flurl.Http.FlurlHttpException: Call failed with status code 404 (Not Found): GET https://718a-45-170-32-25.ngrok.io/api/webhook
+   at Flurl.Http.FlurlRequest.HandleExceptionAsync(FlurlCall call, Exception ex, CancellationToken token)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.ResponseExtensions.ReceiveString(Task`1 response)
+   at Webhook.WebhookTools.GetWebhookData() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 65
+   at Webhook.WebhookTools.GetWebhookDataLikeList() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 73
+   at MailBot.Webhook.controllers.WebhookMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.Webhook\controllers\WebhookMain.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+2022-09-29 10:23:59.006 -06:00 [ERR] Job group1.job threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> Flurl.Http.FlurlHttpException: Call failed with status code 404 (Not Found): GET https://718a-45-170-32-25.ngrok.io/api/webhook
+   at Flurl.Http.FlurlRequest.HandleExceptionAsync(FlurlCall call, Exception ex, CancellationToken token)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.ResponseExtensions.ReceiveString(Task`1 response)
+   at Webhook.WebhookTools.GetWebhookData() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 65
+   at Webhook.WebhookTools.GetWebhookDataLikeList() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 73
+   at MailBot.Webhook.controllers.WebhookMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.Webhook\controllers\WebhookMain.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+   --- End of inner exception stack trace --- [See nested exception: Flurl.Http.FlurlHttpException: Call failed with status code 404 (Not Found): GET https://718a-45-170-32-25.ngrok.io/api/webhook
+   at Flurl.Http.FlurlRequest.HandleExceptionAsync(FlurlCall call, Exception ex, CancellationToken token)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.ResponseExtensions.ReceiveString(Task`1 response)
+   at Webhook.WebhookTools.GetWebhookData() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 65
+   at Webhook.WebhookTools.GetWebhookDataLikeList() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 73
+   at MailBot.Webhook.controllers.WebhookMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.Webhook\controllers\WebhookMain.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)]
+2022-09-29 10:24:19.169 -06:00 [INF] Configurando variables de entorno
+2022-09-29 10:24:19.245 -06:00 [INF] Variables cargadas
+2022-09-29 10:24:19.248 -06:00 [INF] Configurando Quartz
+2022-09-29 10:24:19.400 -06:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2022-09-29 10:24:19.404 -06:00 [INF] Quartz Scheduler created
+2022-09-29 10:24:19.407 -06:00 [INF] RAMJobStore initialized.
+2022-09-29 10:24:19.413 -06:00 [INF] Scheduler meta-data: Quartz Scheduler (v3.4.0.0) 'MainScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 1 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-09-29 10:24:19.419 -06:00 [INF] Quartz scheduler 'MainScheduler' initialized
+2022-09-29 10:24:19.422 -06:00 [INF] Quartz scheduler version: 3.4.0.0
+2022-09-29 10:24:19.425 -06:00 [INF] Quartz configurado correctamente
+2022-09-29 10:24:19.427 -06:00 [INF] Configurando mutex
+2022-09-29 10:24:19.430 -06:00 [INF] Mutex configurado correctamente
+2022-09-29 10:24:19.454 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:36:21.726 -06:00 [INF] Configurando variables de entorno
+2022-09-29 10:36:21.803 -06:00 [INF] Variables cargadas
+2022-09-29 10:36:21.806 -06:00 [INF] Configurando Quartz
+2022-09-29 10:36:21.974 -06:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2022-09-29 10:36:21.978 -06:00 [INF] Quartz Scheduler created
+2022-09-29 10:36:21.981 -06:00 [INF] RAMJobStore initialized.
+2022-09-29 10:36:21.986 -06:00 [INF] Scheduler meta-data: Quartz Scheduler (v3.4.0.0) 'MainScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 1 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-09-29 10:36:21.990 -06:00 [INF] Quartz scheduler 'MainScheduler' initialized
+2022-09-29 10:36:21.992 -06:00 [INF] Quartz scheduler version: 3.4.0.0
+2022-09-29 10:36:21.994 -06:00 [INF] Quartz configurado correctamente
+2022-09-29 10:36:21.996 -06:00 [INF] Configurando mutex
+2022-09-29 10:36:21.998 -06:00 [INF] Mutex configurado correctamente
+2022-09-29 10:36:22.021 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:38:20.994 -06:00 [INF] Configurando variables de entorno
+2022-09-29 10:38:21.066 -06:00 [INF] Variables cargadas
+2022-09-29 10:38:21.069 -06:00 [INF] Configurando Quartz
+2022-09-29 10:38:21.221 -06:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2022-09-29 10:38:21.225 -06:00 [INF] Quartz Scheduler created
+2022-09-29 10:38:21.228 -06:00 [INF] RAMJobStore initialized.
+2022-09-29 10:38:21.233 -06:00 [INF] Scheduler meta-data: Quartz Scheduler (v3.4.0.0) 'MainScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 1 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-09-29 10:38:21.238 -06:00 [INF] Quartz scheduler 'MainScheduler' initialized
+2022-09-29 10:38:21.240 -06:00 [INF] Quartz scheduler version: 3.4.0.0
+2022-09-29 10:38:21.242 -06:00 [INF] Quartz configurado correctamente
+2022-09-29 10:38:21.244 -06:00 [INF] Configurando mutex
+2022-09-29 10:38:21.246 -06:00 [INF] Mutex configurado correctamente
+2022-09-29 10:38:21.273 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:38:22.080 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:38:22.174 -06:00 [INF] Iniciando tarea del Webhook
+2022-09-29 10:38:22.178 -06:00 [INF] Obteniendo los datos de la base de datos
+2022-09-29 10:38:22.327 -06:00 [INF] Actualizando la base de datos
+2022-09-29 10:38:22.961 -06:00 [FTL] Error Obteniendo los datos del webhook
+2022-09-29 10:38:22.974 -06:00 [FTL] Unable to connect to any of the specified MySQL hosts.
+2022-09-29 10:38:22.979 -06:00 [INF] Tarea finalizada exito
+2022-09-29 10:40:34.516 -06:00 [INF] Configurando variables de entorno
+2022-09-29 10:40:34.595 -06:00 [INF] Variables cargadas
+2022-09-29 10:40:34.599 -06:00 [INF] Configurando Quartz
+2022-09-29 10:40:34.764 -06:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2022-09-29 10:40:34.768 -06:00 [INF] Quartz Scheduler created
+2022-09-29 10:40:34.771 -06:00 [INF] RAMJobStore initialized.
+2022-09-29 10:40:34.775 -06:00 [INF] Scheduler meta-data: Quartz Scheduler (v3.4.0.0) 'MainScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 1 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-09-29 10:40:34.778 -06:00 [INF] Quartz scheduler 'MainScheduler' initialized
+2022-09-29 10:40:34.781 -06:00 [INF] Quartz scheduler version: 3.4.0.0
+2022-09-29 10:40:34.784 -06:00 [INF] Quartz configurado correctamente
+2022-09-29 10:40:34.787 -06:00 [INF] Configurando mutex
+2022-09-29 10:40:34.790 -06:00 [INF] Mutex configurado correctamente
+2022-09-29 10:40:34.816 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:40:44.158 -06:00 [INF] Configurando variables de entorno
+2022-09-29 10:40:44.229 -06:00 [INF] Variables cargadas
+2022-09-29 10:40:44.232 -06:00 [INF] Configurando Quartz
+2022-09-29 10:40:44.385 -06:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2022-09-29 10:40:44.388 -06:00 [INF] Quartz Scheduler created
+2022-09-29 10:40:44.392 -06:00 [INF] RAMJobStore initialized.
+2022-09-29 10:40:44.398 -06:00 [INF] Scheduler meta-data: Quartz Scheduler (v3.4.0.0) 'MainScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 1 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-09-29 10:40:44.403 -06:00 [INF] Quartz scheduler 'MainScheduler' initialized
+2022-09-29 10:40:44.405 -06:00 [INF] Quartz scheduler version: 3.4.0.0
+2022-09-29 10:40:44.408 -06:00 [INF] Quartz configurado correctamente
+2022-09-29 10:40:44.410 -06:00 [INF] Configurando mutex
+2022-09-29 10:40:44.412 -06:00 [INF] Mutex configurado correctamente
+2022-09-29 10:40:44.435 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:40:45.205 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:40:45.226 -06:00 [INF] Iniciando tarea del Webhook
+2022-09-29 10:40:45.228 -06:00 [INF] Obteniendo los datos de la base de datos
+2022-09-29 10:40:45.379 -06:00 [INF] Actualizando la base de datos
+2022-09-29 10:40:45.616 -06:00 [FTL] Error Obteniendo los datos del webhook
+2022-09-29 10:40:45.628 -06:00 [FTL] Unable to connect to any of the specified MySQL hosts.
+2022-09-29 10:40:45.633 -06:00 [INF] Tarea finalizada exito
+2022-09-29 10:46:35.845 -06:00 [INF] Configurando variables de entorno
+2022-09-29 10:46:35.924 -06:00 [INF] Variables cargadas
+2022-09-29 10:46:35.927 -06:00 [INF] Configurando Quartz
+2022-09-29 10:46:36.084 -06:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2022-09-29 10:46:36.088 -06:00 [INF] Quartz Scheduler created
+2022-09-29 10:46:36.091 -06:00 [INF] RAMJobStore initialized.
+2022-09-29 10:46:36.097 -06:00 [INF] Scheduler meta-data: Quartz Scheduler (v3.4.0.0) 'MainScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 1 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-09-29 10:46:36.102 -06:00 [INF] Quartz scheduler 'MainScheduler' initialized
+2022-09-29 10:46:36.105 -06:00 [INF] Quartz scheduler version: 3.4.0.0
+2022-09-29 10:46:36.109 -06:00 [INF] Quartz configurado correctamente
+2022-09-29 10:46:36.111 -06:00 [INF] Configurando mutex
+2022-09-29 10:46:36.114 -06:00 [INF] Mutex configurado correctamente
+2022-09-29 10:46:36.141 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:46:37.789 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:46:37.808 -06:00 [INF] Iniciando tarea del Webhook
+2022-09-29 10:46:37.811 -06:00 [INF] Obteniendo los datos de la base de datos
+2022-09-29 10:46:38.001 -06:00 [INF] Actualizando la base de datos
+2022-09-29 10:46:38.242 -06:00 [FTL] Error Obteniendo los datos del webhook
+2022-09-29 10:46:38.253 -06:00 [FTL] Unable to connect to any of the specified MySQL hosts.
+2022-09-29 10:46:38.259 -06:00 [INF] Tarea finalizada exito
+2022-09-29 10:47:06.502 -06:00 [INF] Configurando variables de entorno
+2022-09-29 10:47:06.576 -06:00 [INF] Variables cargadas
+2022-09-29 10:47:06.579 -06:00 [INF] Configurando Quartz
+2022-09-29 10:47:06.731 -06:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2022-09-29 10:47:06.735 -06:00 [INF] Quartz Scheduler created
+2022-09-29 10:47:06.738 -06:00 [INF] RAMJobStore initialized.
+2022-09-29 10:47:06.743 -06:00 [INF] Scheduler meta-data: Quartz Scheduler (v3.4.0.0) 'MainScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 1 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-09-29 10:47:06.747 -06:00 [INF] Quartz scheduler 'MainScheduler' initialized
+2022-09-29 10:47:06.750 -06:00 [INF] Quartz scheduler version: 3.4.0.0
+2022-09-29 10:47:06.753 -06:00 [INF] Quartz configurado correctamente
+2022-09-29 10:47:06.755 -06:00 [INF] Configurando mutex
+2022-09-29 10:47:06.758 -06:00 [INF] Mutex configurado correctamente
+2022-09-29 10:47:06.782 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:47:08.001 -06:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-09-29 10:47:08.021 -06:00 [INF] Iniciando tarea del Webhook
+2022-09-29 10:47:08.023 -06:00 [INF] Obteniendo los datos de la base de datos
+2022-09-29 10:47:08.204 -06:00 [INF] Actualizando la base de datos
+2022-09-29 10:47:08.442 -06:00 [FTL] Error Obteniendo los datos del webhook
+2022-09-29 10:47:08.453 -06:00 [FTL] Unable to connect to any of the specified MySQL hosts.
+2022-09-29 10:47:08.459 -06:00 [INF] Tarea finalizada exito

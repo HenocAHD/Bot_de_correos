@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MailBot.Webhook": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

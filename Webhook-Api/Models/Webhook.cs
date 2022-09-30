@@ -1,10 +1,10 @@
-﻿using Dapper;
+﻿using Newtonsoft.Json;
+using Dapper;
 using System.Linq;
 using System.Collections.Generic;
 using Linkedin.Net.Db;
 using Linkedin.Net.Models;
 using Linkedin.Net.Models.Interfaces;
-using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 
 namespace Webhook_Api.Models
@@ -15,8 +15,8 @@ namespace Webhook_Api.Models
 
         public int id_webhook_data { get; set; }
         public string email { get; set; }
-        [JsonProperty("@event")]
-        [JsonPropertyName("@event")]
+        [JsonProperty("event")]
+        [JsonPropertyName("event")]
         public string evento { get; set; }
         public string ip { get; set; }
         public string sg_content_type { get; set; }

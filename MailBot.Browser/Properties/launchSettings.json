@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MailBot.Browser": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

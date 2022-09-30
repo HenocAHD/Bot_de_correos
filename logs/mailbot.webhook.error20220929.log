@@ -1,0 +1,68 @@
+2022-09-29 10:22:59.133 -06:00 [ERR] Job group1.job threw an unhandled Exception: 
+Flurl.Http.FlurlHttpException: Call failed with status code 404 (Not Found): GET https://718a-45-170-32-25.ngrok.io/api/webhook
+   at Flurl.Http.FlurlRequest.HandleExceptionAsync(FlurlCall call, Exception ex, CancellationToken token)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.ResponseExtensions.ReceiveString(Task`1 response)
+   at Webhook.WebhookTools.GetWebhookData() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 65
+   at Webhook.WebhookTools.GetWebhookDataLikeList() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 73
+   at MailBot.Webhook.controllers.WebhookMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.Webhook\controllers\WebhookMain.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+2022-09-29 10:22:59.223 -06:00 [ERR] Job group1.job threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> Flurl.Http.FlurlHttpException: Call failed with status code 404 (Not Found): GET https://718a-45-170-32-25.ngrok.io/api/webhook
+   at Flurl.Http.FlurlRequest.HandleExceptionAsync(FlurlCall call, Exception ex, CancellationToken token)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.ResponseExtensions.ReceiveString(Task`1 response)
+   at Webhook.WebhookTools.GetWebhookData() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 65
+   at Webhook.WebhookTools.GetWebhookDataLikeList() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 73
+   at MailBot.Webhook.controllers.WebhookMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.Webhook\controllers\WebhookMain.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+   --- End of inner exception stack trace --- [See nested exception: Flurl.Http.FlurlHttpException: Call failed with status code 404 (Not Found): GET https://718a-45-170-32-25.ngrok.io/api/webhook
+   at Flurl.Http.FlurlRequest.HandleExceptionAsync(FlurlCall call, Exception ex, CancellationToken token)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.ResponseExtensions.ReceiveString(Task`1 response)
+   at Webhook.WebhookTools.GetWebhookData() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 65
+   at Webhook.WebhookTools.GetWebhookDataLikeList() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 73
+   at MailBot.Webhook.controllers.WebhookMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.Webhook\controllers\WebhookMain.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)]
+2022-09-29 10:23:58.950 -06:00 [ERR] Job group1.job threw an unhandled Exception: 
+Flurl.Http.FlurlHttpException: Call failed with status code 404 (Not Found): GET https://718a-45-170-32-25.ngrok.io/api/webhook
+   at Flurl.Http.FlurlRequest.HandleExceptionAsync(FlurlCall call, Exception ex, CancellationToken token)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.ResponseExtensions.ReceiveString(Task`1 response)
+   at Webhook.WebhookTools.GetWebhookData() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 65
+   at Webhook.WebhookTools.GetWebhookDataLikeList() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 73
+   at MailBot.Webhook.controllers.WebhookMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.Webhook\controllers\WebhookMain.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+2022-09-29 10:23:59.006 -06:00 [ERR] Job group1.job threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> Flurl.Http.FlurlHttpException: Call failed with status code 404 (Not Found): GET https://718a-45-170-32-25.ngrok.io/api/webhook
+   at Flurl.Http.FlurlRequest.HandleExceptionAsync(FlurlCall call, Exception ex, CancellationToken token)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.ResponseExtensions.ReceiveString(Task`1 response)
+   at Webhook.WebhookTools.GetWebhookData() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 65
+   at Webhook.WebhookTools.GetWebhookDataLikeList() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 73
+   at MailBot.Webhook.controllers.WebhookMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.Webhook\controllers\WebhookMain.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+   --- End of inner exception stack trace --- [See nested exception: Flurl.Http.FlurlHttpException: Call failed with status code 404 (Not Found): GET https://718a-45-170-32-25.ngrok.io/api/webhook
+   at Flurl.Http.FlurlRequest.HandleExceptionAsync(FlurlCall call, Exception ex, CancellationToken token)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   at Flurl.Http.ResponseExtensions.ReceiveString(Task`1 response)
+   at Webhook.WebhookTools.GetWebhookData() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 65
+   at Webhook.WebhookTools.GetWebhookDataLikeList() in C:\Users\Henoc Hernandez\Bot_de_correos\Webhook\WebhookTools.cs:line 73
+   at MailBot.Webhook.controllers.WebhookMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.Webhook\controllers\WebhookMain.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)]
+2022-09-29 10:38:22.961 -06:00 [FTL] Error Obteniendo los datos del webhook
+2022-09-29 10:38:22.974 -06:00 [FTL] Unable to connect to any of the specified MySQL hosts.
+2022-09-29 10:40:45.616 -06:00 [FTL] Error Obteniendo los datos del webhook
+2022-09-29 10:40:45.628 -06:00 [FTL] Unable to connect to any of the specified MySQL hosts.
+2022-09-29 10:46:38.242 -06:00 [FTL] Error Obteniendo los datos del webhook
+2022-09-29 10:46:38.253 -06:00 [FTL] Unable to connect to any of the specified MySQL hosts.
+2022-09-29 10:47:08.442 -06:00 [FTL] Error Obteniendo los datos del webhook
+2022-09-29 10:47:08.453 -06:00 [FTL] Unable to connect to any of the specified MySQL hosts.

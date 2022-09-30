@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using Linkedin.Net.Models.Extenciones;
 
 namespace MailBot.Webhook.app
 {
@@ -75,13 +76,13 @@ namespace MailBot.Webhook.app
 
         public async static void MainJob()
         {
-            IJobDetail jobDetail = JobBuilder.Create<WebhookJob>()
+            IJobDetail jobDetail = JobBuilder.Create<WebhookMain>()
                 .WithIdentity("job", "group1")
                 .Build();
 
             ITrigger trigger = TriggerBuilder.Create()
                 .WithIdentity("trigger1", "group1")
-                //colocar el witscheduler
+                .WithSchedule(CronScheduleBuilder.DailyAtHourAndMinute(Environment.GetEnvironmentVariable("hora_ejecucion").ToInt(), Environment.GetEnvironmentVariable("minutos_ejecucion").ToInt()))
                 .StartNow()
                 .Build();
 
