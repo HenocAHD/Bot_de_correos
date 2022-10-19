@@ -19,7 +19,7 @@ namespace Webhook_Api.Controllers
                 var vlue2 = value.ToString();
                 var vlue3 = "{\"content\": " + vlue2 + "}";
                 var webhookreceiver = JsonSerializer.Deserialize<WebhookList>(vlue3);
-                Console.WriteLine(webhookreceiver);
+                Console.WriteLine(webhookreceiver); 
                 foreach (var item in webhookreceiver.content)
                 {
                     item.Create(database.getdatabase());
