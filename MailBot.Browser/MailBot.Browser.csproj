@@ -9,14 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove=".env" />
     <None Remove="NuGet.Config" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include=".env">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="NuGet.Config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
@@ -38,6 +34,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Snovio\SnovioApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update=".env">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

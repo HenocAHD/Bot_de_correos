@@ -9,16 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Middleware\**" />
+    <Content Remove="Middleware\**" />
+    <EmbeddedResource Remove="Middleware\**" />
+    <None Remove="Middleware\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="dotenv.net" Version="3.1.1" />
     <PackageReference Include="Linkedin.Net.Models" Version="1.0.7" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.23.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
     <PackageReference Include="MySql.Data" Version="8.0.30" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Middleware\" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.23.1" />
   </ItemGroup>
 
   <ItemGroup>

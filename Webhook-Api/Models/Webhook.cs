@@ -97,5 +97,15 @@ namespace Webhook_Api.Models
                 return (result);
             }
         }
+
+        public static User GetUser(database database, string username, string password)
+        {
+            using (var db = database.connection)
+            {
+                var sql = $"select * from Users where username = '{username}' and password = '{password}'";
+                var result = db.QueryFirstOrDefault<User>(sql);
+                return (result);
+            }
+        }
     }
 }

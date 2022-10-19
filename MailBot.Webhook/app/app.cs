@@ -82,7 +82,7 @@ namespace MailBot.Webhook.app
 
             ITrigger trigger = TriggerBuilder.Create()
                 .WithIdentity("trigger1", "group1")
-                .WithSchedule(CronScheduleBuilder.DailyAtHourAndMinute(Environment.GetEnvironmentVariable("hora_ejecucion").ToInt(), Environment.GetEnvironmentVariable("minutos_ejecucion").ToInt()))
+                //.WithSchedule(CronScheduleBuilder.DailyAtHourAndMinute(Environment.GetEnvironmentVariable("hora_ejecucion").ToInt(), Environment.GetEnvironmentVariable("minutos_ejecucion").ToInt()))
                 .StartNow()
                 .Build();
 

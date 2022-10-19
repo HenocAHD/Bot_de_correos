@@ -105,92 +105,99 @@ namespace MailBot.Browser.controllers
         //Ejecucion
         public async Task Execute(IJobExecutionContext context)
         {
-            var cliente = clients.SelectById(app.app.getMutexDatabase, context.MergedJobDataMap["client_id"].ToString());
-
-            PuppeteerSharp.Browser browser;
-
-            //creamos el navegador
-            Log.Information("Descargando el navegador");
-            if (app.app.getMutexDatabase.WaitOne())
-            {
-                new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultChromiumRevision).Wait();
-                app.app.getMutexDatabase.ReleaseMutex();
-            }
-            Log.Information("Navegador descargado");
-
-            //Launcher the browser
-            browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = true, DefaultViewport = new ViewPortOptions { Width = 600, Height = 1200 }, Args = new[] { $"--proxy-server={Environment.GetEnvironmentVariable("proxy_ip")}:{Environment.GetEnvironmentVariable("proxy_port")}" } });
-
-            //create a new page and go to linkedin
-            Page page = await browser.NewPageAsync();
-            await page.AuthenticateAsync(new Credentials { Username = Environment.GetEnvironmentVariable("proxy_user"), Password = Environment.GetEnvironmentVariable("proxy_password") });
-
-            SetCookie(page, app.app.getMutexCookie);
-
             try
             {
-                //ingresamos a Linkedin
-                var resgoto = await page.GoToAsync("https://www.linkedin.com/login/", 120000, new[] { WaitUntilNavigation.DOMContentLoaded });
-                await Task.Delay(5000);
-            }
-            catch (NavigationException ex)
-            {
-                Log.Fatal("La tarea no se pudo completar, el tiempo de espera ha excedido el limite establecido");
-                Log.Fatal($"Error: {ex.Message}");
-                return;
-            }
+                var cliente = clients.SelectById(app.app.getMutexDatabase, context.MergedJobDataMap["client_id"].ToString());
 
-            if (!ValidateCookie())
-            {
-                //investigar el porque no funciona la validacion
-                Log.Information("-> Ejecutando login using mail n user");
+                PuppeteerSharp.Browser browser;
+
+                //creamos el navegador
+                Log.Information("Descargando el navegador");
+                if (app.app.getMutexDatabase.WaitOne())
+                {
+                    new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultChromiumRevision).Wait();
+                    app.app.getMutexDatabase.ReleaseMutex();
+                }
+                Log.Information("Navegador descargado");
+
+                //Launcher the browser
+                browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = false, DefaultViewport = new ViewPortOptions { Width = 600, Height = 1200 }, Args = new[] { $"--proxy-server={Environment.GetEnvironmentVariable("proxy_ip")}:{Environment.GetEnvironmentVariable("proxy_port")}" } });
+
+                //create a new page and go to linkedin
+                Page page = await browser.NewPageAsync();
+                await page.AuthenticateAsync(new Credentials { Username = Environment.GetEnvironmentVariable("proxy_user"), Password = Environment.GetEnvironmentVariable("proxy_password") });
+
+                SetCookie(page, app.app.getMutexCookie);
+
                 try
                 {
-                    await page.TypeAsync("#username", Environment.GetEnvironmentVariable("usermail"));
-                    await page.TypeAsync("#password", Environment.GetEnvironmentVariable("passwordmail"));
-                    await page.ClickAsync("button[type='submit']", new ClickOptions { Delay = new Random().Next(1, 3) * new Random().Next(10, 20) });
-                    await Task.Delay(10000);
-
-                    await page.WaitForNavigationAsync();
+                    //ingresamos a Linkedin
+                    var resgoto = await page.GoToAsync("https://www.linkedin.com/login/", 120000, new[] { WaitUntilNavigation.DOMContentLoaded });
+                    await Task.Delay(5000);
                 }
-                catch (Exception ex)
+                catch (NavigationException ex)
                 {
-                    Log.Fatal("-> Error ingresando usuario");
-                    Log.Fatal(ex.Message);
+                    Log.Fatal("La tarea no se pudo completar, el tiempo de espera ha excedido el limite establecido");
+                    Log.Fatal($"Error: {ex.Message}");
+                    return;
                 }
+
+                if (!ValidateCookie())
+                {
+                    //investigar el porque no funciona la validacion
+                    Log.Information("-> Ejecutando login using mail n user");
+                    try
+                    {
+                        await page.TypeAsync("#username", Environment.GetEnvironmentVariable("usermail"));
+                        await page.TypeAsync("#password", Environment.GetEnvironmentVariable("passwordmail"));
+                        await page.ClickAsync("button[type='submit']", new ClickOptions { Delay = new Random().Next(1, 3) * new Random().Next(10, 20) });
+                        await Task.Delay(10000);
+
+                        await page.WaitForNavigationAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Fatal("-> Error ingresando usuario");
+                        Log.Fatal(ex.Message);
+                    }
+                }
+
+                await Task.Delay(1000);
+
+                if (page.Url != "https://www.linkedin.com/feed/") return;
+
+                Log.Information("Guardando la cookie");
+                SaveCookie(page, app.app.getMutexCookie);
+                Log.Information("Cookie guardada");
+
+                try
+                {
+                    //ingresamos a Linkedin
+                    Log.Information("Obteniendo la nueva url");
+                    var resgoto = await page.GoToAsync(cliente.client_url.ToString(), 120000, new[] { WaitUntilNavigation.DOMContentLoaded });
+                    //await page.WaitForNavigationAsync();
+                    Console.WriteLine(page.Url);
+                    cliente.client_url = page.Url;
+                    cliente.client_url_update = true;
+
+                    cliente.Update(app.app.getMutexDatabase);
+                    await Task.Delay(5000);
+                    Log.Information("Url actualizada con exito");
+                }
+                catch (NavigationException ex)
+                {
+                    Log.Fatal("La tarea no se pudo completar, el tiempo de espera ha excedido el limite establecido");
+                    Log.Fatal($"Error: {ex.Message}");
+                    return;
+                }
+
+                Log.Information("Tarea Terminada");
+                await browser.CloseAsync();
             }
-
-            await Task.Delay(1000);
-
-            if (page.Url != "https://www.linkedin.com/feed/") return;
-
-            Log.Information("Guardando la cookie");
-            SaveCookie(page, app.app.getMutexCookie);
-            Log.Information("Cookie guardada");
-
-            try
+            catch(Exception e)
             {
-                //ingresamos a Linkedin
-                Log.Information("Obteniendo la nueva url");
-                var resgoto = await page.GoToAsync(cliente.client_url.ToString(), 120000, new[] { WaitUntilNavigation.DOMContentLoaded });
-                //await page.WaitForNavigationAsync();
-                Console.WriteLine(page.Url);
-                cliente.client_url = page.Url;
-                cliente.client_url_update = true;
-
-                cliente.Update(app.app.getMutexDatabase);
-                await Task.Delay(5000);
-                Log.Information("Url actualizada con exito");
+                Log.Fatal(e.Message);
             }
-            catch (NavigationException ex)
-            {
-                Log.Fatal("La tarea no se pudo completar, el tiempo de espera ha excedido el limite establecido");
-                Log.Fatal($"Error: {ex.Message}");
-                return;
-            }
-
-            Log.Information("Tarea Terminada");
-            await browser.CloseAsync();
         }
 
     }
