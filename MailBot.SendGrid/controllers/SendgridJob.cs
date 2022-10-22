@@ -44,15 +44,10 @@ namespace MailBot.SendGrid.controllers
 
                     var account_mail = $"{cuenta.account_name.Replace(" ", ".")}@panamify.com".ToLower();
                     Console.WriteLine(account_mail);
-                    var templateUrl = Path.Combine(Directory.GetCurrentDirectory(), "templates", $"{cuenta.account_name}.html");
-                    if (!File.Exists(templateUrl))
-                    {
-                        var files = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "templates"));
-                        templateUrl = files[new Random().Next(0, files.Length)];
-                    }
+                    var templateUrl = Path.Combine(Directory.GetCurrentDirectory(), "templates", "Plantilla.html");
                     Console.WriteLine(templateUrl);
                     Console.WriteLine(cliente.client_email);
-                    var enviando = await sendgrid_client.SendEmail(account_mail, cliente.client_email, templateUrl, cliente.client_name);
+                    var enviando = await sendgrid_client.SendEmail(account_mail, cliente.client_email, templateUrl, cuenta.account_name);
                     if (enviando.ToString() != "Accepted")
                     {
                         Log.Fatal("Sengrid no acepto el envio del correo");

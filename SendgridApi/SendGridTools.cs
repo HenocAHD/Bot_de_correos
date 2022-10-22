@@ -11,16 +11,17 @@ public class SendGridTools{
         this._apiKey = apiKey;
     }
 
-    public async Task<string> SendEmail(string fromEmail, string toEmail, string templateUrl, string toName)
+    public async Task<string> SendEmail(string fromEmail, string toEmail, string templateUrl, string AccountName)
     {
         var client = new SendGridClient(this._apiKey);
         var data =new {};
         var from = new EmailAddress(fromEmail, "Panamify");
         var to = new EmailAddress(toEmail);
-        var subject = $"Hi {toName}";
+        var subject = $"Hi";
         var plainContext = "123";
         var htmlContent = File.ReadAllText(templateUrl);
-        htmlContent = htmlContent.Replace("---Nombre---", toName);
+        //htmlContent = htmlContent.Replace("Name Account", AccountName);
+        //htmlContent = htmlContent.Replace("linkedinlink", AccountName.Replace(" ","").ToLower());
         var ms = MailHelper.CreateSingleEmail(from, to, subject, plainContext, htmlContent);
         var response = await client.SendEmailAsync(ms);
 
