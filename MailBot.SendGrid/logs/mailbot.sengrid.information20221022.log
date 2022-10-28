@@ -1,0 +1,89 @@
+2022-10-22 09:08:49.176 +00:00 [INF] Configurando variables de entorno
+2022-10-22 09:08:49.353 +00:00 [INF] Variables cargadas
+2022-10-22 09:08:49.354 +00:00 [INF] Configurando Quartz
+2022-10-22 09:08:49.825 +00:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2022-10-22 09:08:49.833 +00:00 [INF] Quartz Scheduler created
+2022-10-22 09:08:49.835 +00:00 [INF] RAMJobStore initialized.
+2022-10-22 09:08:49.851 +00:00 [INF] Scheduler meta-data: Quartz Scheduler (v3.4.0.0) 'MainScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 1 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-10-22 09:08:49.853 +00:00 [INF] Quartz scheduler 'MainScheduler' initialized
+2022-10-22 09:08:49.853 +00:00 [INF] Quartz scheduler version: 3.4.0.0
+2022-10-22 09:08:49.855 +00:00 [INF] Quartz configurado correctamente
+2022-10-22 09:08:49.856 +00:00 [INF] Configurando mutex
+2022-10-22 09:08:49.856 +00:00 [INF] Mutex configurado correctamente
+2022-10-22 09:08:49.902 +00:00 [INF] Scheduler MainScheduler_$_NON_CLUSTERED started.
+2022-10-22 09:08:50.947 +00:00 [ERR] Job group1.job threw an unhandled Exception: 
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+ ---> System.Net.Sockets.SocketException (111): Connection refused
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at System.Net.Sockets.TcpClient.CompleteConnectAsync(Task task)
+   at MySql.Data.MySqlClient.NativeDriver.<>c.<Open>b__40_0(Exception ex)
+   at System.AggregateException.Handle(Func`2 predicate)
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   at MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Dapper.SqlMapper.QueryImpl[T](IDbConnection cnn, CommandDefinition command, Type effectiveType)+MoveNext() in /_/Dapper/SqlMapper.cs:line 1093
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Linkedin.Net.Models.client_connections.SelectAll(database database)
+   at MailBot.SendGrid.controllers.SendgridMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.SendGrid\controllers\SendgridMain.cs:line 16
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+2022-10-22 09:08:51.055 +00:00 [ERR] Job group1.job threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+ ---> System.Net.Sockets.SocketException (111): Connection refused
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at System.Net.Sockets.TcpClient.CompleteConnectAsync(Task task)
+   at MySql.Data.MySqlClient.NativeDriver.<>c.<Open>b__40_0(Exception ex)
+   at System.AggregateException.Handle(Func`2 predicate)
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   at MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Dapper.SqlMapper.QueryImpl[T](IDbConnection cnn, CommandDefinition command, Type effectiveType)+MoveNext() in /_/Dapper/SqlMapper.cs:line 1093
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Linkedin.Net.Models.client_connections.SelectAll(database database)
+   at MailBot.SendGrid.controllers.SendgridMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.SendGrid\controllers\SendgridMain.cs:line 16
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+   --- End of inner exception stack trace --- [See nested exception: MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+ ---> System.Net.Sockets.SocketException (111): Connection refused
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at System.Net.Sockets.TcpClient.CompleteConnectAsync(Task task)
+   at MySql.Data.MySqlClient.NativeDriver.<>c.<Open>b__40_0(Exception ex)
+   at System.AggregateException.Handle(Func`2 predicate)
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   at MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at Dapper.SqlMapper.QueryImpl[T](IDbConnection cnn, CommandDefinition command, Type effectiveType)+MoveNext() in /_/Dapper/SqlMapper.cs:line 1093
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Linkedin.Net.Models.client_connections.SelectAll(database database)
+   at MailBot.SendGrid.controllers.SendgridMain.Execute(IJobExecutionContext context) in C:\Users\Henoc Hernandez\Bot_de_correos\MailBot.SendGrid\controllers\SendgridMain.cs:line 16
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)]

@@ -18,7 +18,7 @@ namespace MailBot.SendGrid.controllers
 
         public async Task Execute(IJobExecutionContext context)
         {
-            
+            string account_mail;
             Log.Information("Iniciando la tarea de enviar los correos");
             try
             {
@@ -42,12 +42,16 @@ namespace MailBot.SendGrid.controllers
 
                     Log.Information("Enviando el mensaje...");
 
-                    var account_mail = $"{cuenta.account_name.Replace(" ", ".")}@panamify.com".ToLower();
-                    Console.WriteLine(account_mail);
+                    if(cuenta.account_virtual_email == null)
+                    {
+                        cuenta.account_virtual_email = $"{cuenta.account_name.Replace(" ", ".")}@panamify.com".ToLower();
+                        cuenta.Update(app.app.getMutexDatabase);
+                    }
+    
                     var templateUrl = Path.Combine(Directory.GetCurrentDirectory(), "templates", "Plantilla.html");
                     Console.WriteLine(templateUrl);
                     Console.WriteLine(cliente.client_email);
-                    var enviando = await sendgrid_client.SendEmail(account_mail, cliente.client_email, templateUrl, cuenta.account_name);
+                    var enviando = await sendgrid_client.SendEmail(cuenta.account_virtual_email, cliente.client_email, templateUrl, cuenta.account_name);
                     if (enviando.ToString() != "Accepted")
                     {
                         Log.Fatal("Sengrid no acepto el envio del correo");

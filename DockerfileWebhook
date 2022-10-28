@@ -5,9 +5,9 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["MailBot.Webhook/MailBot.Webhook.csproj", "MailBot.Webhook/"]
 COPY ["MailBot.Webhook/NuGet.Config", "MailBot.Webhook/"]
 COPY ["Webhook/NuGet.Config", "Webhook/"]
+COPY ["MailBot.Webhook/MailBot.Webhook.csproj", "MailBot.Webhook/"]
 COPY ["Webhook/WebhookApi.csproj", "Webhook/"]
 RUN dotnet restore "MailBot.Webhook/MailBot.Webhook.csproj"
 COPY . .
