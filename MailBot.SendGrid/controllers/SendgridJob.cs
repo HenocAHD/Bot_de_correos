@@ -33,48 +33,55 @@ namespace MailBot.SendGrid.controllers
                 var cliente = clients.SelectById(database.getdatabase(), context.MergedJobDataMap["client_id"].ToString());
                 Log.Information("Datos obtenidos correctamente");
 
-                if(email_sent.SelectByClientEmail(app.app.getMutexDatabase, cliente.client_email) == null)
+                if (cliente.client_email != null | cliente.client_email != String.Empty)
                 {
-                    Log.Information("Creando el cliente de Sendgrid...");
-                    Console.WriteLine(Environment.GetEnvironmentVariable("api_key").ToString());
-                    var sendgrid_client = new SendGridTools("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");
-                    Log.Information("Cliente creado correctamente");
-
-                    Log.Information("Enviando el mensaje...");
-
-                    if(cuenta.account_virtual_email == null)
+                    if (email_sent.SelectByClientEmail(app.app.getMutexDatabase, cliente.client_email) == null)
                     {
-                        cuenta.account_virtual_email = $"{cuenta.account_name.Replace(" ", ".")}@panamify.com".ToLower();
-                        cuenta.Update(app.app.getMutexDatabase);
-                    }
-    
-                    var templateUrl = Path.Combine(Directory.GetCurrentDirectory(), "templates", "Plantilla.html");
-                    Console.WriteLine(templateUrl);
-                    Console.WriteLine(cliente.client_email);
-                    var enviando = await sendgrid_client.SendEmail(cuenta.account_virtual_email, cliente.client_email, templateUrl, cuenta.account_name);
-                    if (enviando.ToString() != "Accepted")
-                    {
-                        Log.Fatal("Sengrid no acepto el envio del correo");
-                        Log.Fatal(enviando);
+                        Log.Information("Creando el cliente de Sendgrid...");
+                        Console.WriteLine(Environment.GetEnvironmentVariable("api_key").ToString());
+                        var sendgrid_client = new SendGridTools("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");
+                        Log.Information("Cliente creado correctamente");
+
+                        Log.Information("Enviando el mensaje...");
+
+                        if (cuenta.account_virtual_email == null)
+                        {
+                            cuenta.account_virtual_email = $"{cuenta.account_name.Replace(" ", ".")}@panamify.com".ToLower();
+                            cuenta.Update(app.app.getMutexDatabase);
+                        }
+
+                        var templateUrl = Path.Combine(Directory.GetCurrentDirectory(), "templates", "Plantilla.html");
+                        Console.WriteLine(templateUrl);
+                        Console.WriteLine(cliente.client_email);
+                        var enviando = await sendgrid_client.SendEmail(cuenta.account_virtual_email, cliente.client_email, templateUrl, cuenta.account_name);
+                        if (enviando.ToString() != "Accepted")
+                        {
+                            Log.Fatal("Sengrid no acepto el envio del correo");
+                            Log.Fatal(enviando);
+                        }
+                        else
+                        {
+                            //agregar los registros a emails_sent;
+                            var cliente1 = new email_sent
+                            {
+                                create_at = DateTime.Now,
+                                email_from = cuenta.account_id,
+                                email_to = cliente.client_id,
+                                date_sent = DateTime.Now,
+                                status = 1
+                            };
+                            cliente1.Create(app.app.getMutexDatabase);
+                            Log.Information("Correo enviado correctamente");
+                        }
                     }
                     else
                     {
-                        //agregar los registros a emails_sent;
-                        var cliente1 = new email_sent
-                        {
-                            create_at = DateTime.Now,
-                            email_from = cuenta.account_id,
-                            email_to = cliente.client_id,
-                            date_sent = DateTime.Now,
-                            status = 1
-                        };
-                        cliente1.Create(app.app.getMutexDatabase);
-                        Log.Information("Correo enviado correctamente");
+                        Log.Information("Ya se envio un correo anteriormente");
                     }
                 }
                 else
                 {
-                    Log.Information("Ya se envio un correo anteriormente");
+                    Log.Information("El cliente no tiene un email asignado");
                 }
 
                 
