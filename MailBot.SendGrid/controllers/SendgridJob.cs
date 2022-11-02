@@ -33,8 +33,11 @@ namespace MailBot.SendGrid.controllers
                 var cliente = clients.SelectById(database.getdatabase(), context.MergedJobDataMap["client_id"].ToString());
                 Log.Information("Datos obtenidos correctamente");
 
-                if (cliente.client_email != null | cliente.client_email != String.Empty)
+                if (!String.IsNullOrEmpty(cliente.client_email))
                 {
+                    Console.WriteLine(cliente.client_email.GetType());
+                    Console.WriteLine(cliente.client_email.Length);
+                    if(cliente.client_email == String.Empty) Console.WriteLine("si");
                     if (email_sent.SelectByClientEmail(app.app.getMutexDatabase, cliente.client_email) == null)
                     {
                         Log.Information("Creando el cliente de Sendgrid...");
