@@ -32,7 +32,7 @@ namespace MailBot.Snovio.controllers
                         if (newEmail.data.emails.Count > 0)
                         {
                             cliente.client_email = newEmail.data.emails[0].email;
-                            cliente.Update(app.app.getMutexDatabase);
+                            cliente.Update(database.getdatabase());
                             Log.Information("Emails actuializados correctamente");
                         }
                     }

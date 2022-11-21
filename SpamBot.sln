@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailBot.Seguimiento", "Mail
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webhook-Api", "Webhook-Api\Webhook-Api.csproj", "{CED5E827-DF34-4DE8-BB71-6D8DAC8D2DB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailBot.Linkedin", "MailBot.Linkedin\MailBot.Linkedin.csproj", "{6E6D6692-E779-492E-877B-A9F31BFDD052}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{CED5E827-DF34-4DE8-BB71-6D8DAC8D2DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CED5E827-DF34-4DE8-BB71-6D8DAC8D2DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CED5E827-DF34-4DE8-BB71-6D8DAC8D2DB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E6D6692-E779-492E-877B-A9F31BFDD052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E6D6692-E779-492E-877B-A9F31BFDD052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E6D6692-E779-492E-877B-A9F31BFDD052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E6D6692-E779-492E-877B-A9F31BFDD052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
